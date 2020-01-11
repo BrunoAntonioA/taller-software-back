@@ -32,6 +32,7 @@ server.use(express.json())
  * para el servidor. Para crear nuevas ir
  * a la carpeta /server/routes
  */
+server.use(require('./routes/concurso'))
 server.use(require('./routes/index'))
 server.use(require('./routes/public'))
 server.use(require('./routes/register'))
@@ -39,10 +40,10 @@ server.use(require('./routes/login'))
 server.use(require('./routes/private'))
 
 /* Método para iniciar el servidor */
-server.start = async (port=3000, dbhost='webmauri.ddns.net', dbusr='', dbpwd='', db='taller-sw-db') => {
+server.start = async (port=3000, dbhost='webmauri.ddns.net', db='taller-sw-db') => {
 
     /* Obtiene las credenciales de MongoDB y sus parámetros de configuración */
-    const mongo = `mongodb://${dbusr}:${dbpwd}@${dbhost}/${db}`
+    const mongo = `mongodb://${dbhost}/${db}`
     const mongoOptions = {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}
 
     /* Conecta con MongoDB e inicia el servicio HTTP */
