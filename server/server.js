@@ -39,7 +39,7 @@ server.use(require('./routes/login'))
 server.use(require('./routes/private'))
 
 /* Método para iniciar el servidor */
-server.start = async (port=3000, dbhost='192.168.1.85', dbusr='', dbpwd='', db='taller-sw-db') => {
+server.start = async (port=3000, dbhost='webmauri.ddns.net', dbusr='', dbpwd='', db='taller-sw-db') => {
 
     /* Obtiene las credenciales de MongoDB y sus parámetros de configuración */
     const mongo = `mongodb://${dbusr}:${dbpwd}@${dbhost}/${db}`
