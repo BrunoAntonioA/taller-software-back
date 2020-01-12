@@ -22,7 +22,7 @@ router.post('/proyecto', (req, res) => {
 
 router.get('/proyecto', (req, res) => {
       Proyecto.find((error, proyectos) => {
-        if(error) return res.status(401).send({message: 'Already registered'})
+        if(error) return res.status(404).send({message: 'Not found'})
         return res.status(201).send(proyectos)
     })
 })
