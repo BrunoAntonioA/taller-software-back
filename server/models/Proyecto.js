@@ -60,4 +60,4 @@ const ProyectSchema = new mongoose.Schema({
 })
 
 /* Módulo a exportar */
-module.exports = mongoose.model('Proyecto', ProjectSchema)
+module.exports = mongoose.model('Proyecto', ProyectSchema)
