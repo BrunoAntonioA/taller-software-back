@@ -2,18 +2,18 @@ const mongoose = require('mongoose')
 
 const ConcursoSchema = new mongoose.Schema({
     
-    name: {
+    nombre: {
         type: String, 
         required: true, 
         trim: true, 
         unique: true, 
     },
-    start_date: {
+    fecha_inicio: {
         type: Date,
         trim: true,
         required: true,
     },
-    end_date: {
+    fecha_termino: {
         type: Date,
         trim: true,
         required: true,

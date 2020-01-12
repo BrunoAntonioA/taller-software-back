@@ -27,4 +27,12 @@ router.get('/proyecto', (req, res) => {
     })
 })
 
+router.get('/proyecto/:id', (req, res) => {
+    const id = req.params.id
+    Concurso.find({_id: id}, (error, concursos) => {
+        if (error) return res.status(404).send({ message: 'Not found' })
+        return res.status(201).send(concursos)
+    })
+})
+
 module.exports = router
