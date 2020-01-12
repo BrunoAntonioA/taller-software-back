@@ -19,7 +19,7 @@ router.post('/concurso', (req, res) => {
 
 router.get('/concurso', (req, res) => {
     Concurso.find((error, concursos) => {
-        if(error) return res.status(401).send({message: 'Already registered'})
+        if(error) return res.status(404).send({message: 'Not found'})
         return res.status(201).send(concursos)
     })
 })

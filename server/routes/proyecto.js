@@ -14,12 +14,16 @@ router.post('/proyecto', (req, res) => {
         nota_uno: nota_uno, 
         nota_dos: nota_dos
     })
+    newProyeto.save((error) => {
+        if(error) return res.status(401).send({message: 'Already registered'})
+        return res.status(201).send({message: 'Done!'})
+    })
 })
 
 router.get('/proyecto', (req, res) => {
-      Proyecto.find((error, proyecto) => {
+      Proyecto.find((error, proyectos) => {
         if(error) return res.status(401).send({message: 'Already registered'})
-        return res.status(201).send(proyecto)
+        return res.status(201).send(proyectos)
     })
 })
 
