@@ -32,4 +32,13 @@ router.get('/concurso/:id', (req, res) => {
     })
 })
 
+router.post('/concurso/eliminar/:id', (req, res) => {
+    const id = req.params.id
+    Concurso.remove({_id: id}, (error, concursos) => {
+        if (error) return res.status(404).send({ message: 'Not found' })
+        return res.status(201).send({ message: 'Deleted!' })
+    })
+})
+
+
 module.exports = router
