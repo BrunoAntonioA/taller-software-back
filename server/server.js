@@ -38,6 +38,8 @@ server.use(require('./routes/public'))
 server.use(require('./routes/register'))
 server.use(require('./routes/login'))
 server.use(require('./routes/private'))
+server.use(require('./routes/proyecto'))
+
 
 /* Método para iniciar el servidor */
 server.start = async (port=3000, dbhost='webmauri.ddns.net', db='taller-sw-db') => {
