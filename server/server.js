@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const fileUpload = require('express-fileupload');
 
 /* 
  * Permite instanciar un servidor HTTP
@@ -27,6 +28,7 @@ server.use = (module) => {
 
 /* Emplea JSON como notación de objetos */
 server.use(express.json())
+server.use(fileUpload())
 
 /* Se emplan las siguientes rutas
  * para el servidor. Para crear nuevas ir
@@ -34,6 +36,7 @@ server.use(express.json())
  */
 server.use(require('./routes/concurso'))
 server.use(require('./routes/index'))
+server.use(require('./routes/subirpdf'))
 server.use(require('./routes/public'))
 server.use(require('./routes/register'))
 server.use(require('./routes/login'))
