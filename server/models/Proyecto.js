@@ -64,6 +64,12 @@ const ProyectSchema = new mongoose.Schema({
         trim: true,
         unique: false,
     },
+
+    etapa:{
+        type: Number,
+        required: true,
+        trim: true,
+    }
     
 })
 
