@@ -36,7 +36,7 @@ server.use(fileUpload())
  */
 server.use(require('./routes/concurso'))
 server.use(require('./routes/index'))
-server.use(require('./routes/subirpdf'))
+server.use(require('./routes/pdf'))
 server.use(require('./routes/public'))
 server.use(require('./routes/register'))
 server.use(require('./routes/login'))
