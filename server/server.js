@@ -3,23 +3,11 @@ const app = express()
 const mongoose = require('mongoose')
 const fileUpload = require('express-fileupload');
 
-/* 
- * Permite instanciar un servidor HTTP
- * de manera rápida y sencilla. Además
- * conecta con MongoDB.
- * 
- * Las rutas del servidor pueden ser
- * encontradas dentro de: /server/routes
- * y pueden ser incluidas en la
- * sección correspondiente
- * 
- * Autores: Rodrigo Maureira Contreras
- *          Felipe Céspedes Cordero
- * 
- */
+const cors = require('cors');
 
 /* Módulo a exportar */
 var server = module.exports = {}
+
 
 /* Permite agregar modulos adicionales */
 server.use = (module) => {
@@ -28,12 +16,9 @@ server.use = (module) => {
 
 /* Emplea JSON como notación de objetos */
 server.use(express.json())
+app.use(cors({ origin: 'http://localhost:4000' }));
 server.use(fileUpload())
 
-/* Se emplan las siguientes rutas
- * para el servidor. Para crear nuevas ir
- * a la carpeta /server/routes
- */
 server.use(require('./routes/concurso'))
 server.use(require('./routes/index'))
 server.use(require('./routes/pdf'))
@@ -43,6 +28,7 @@ server.use(require('./routes/login'))
 server.use(require('./routes/private'))
 server.use(require('./routes/proyecto'))
 server.use(require('./routes/evento'))
+server.use(require('./routes/postulante'))
 
 
 /* Método para iniciar el servidor */
