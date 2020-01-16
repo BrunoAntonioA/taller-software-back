@@ -67,8 +67,7 @@ router.post('/proyecto/eliminar/:id', (req, res) => {
 
 // Elimina un proyecto según su id
 router.post('/proyecto/actualizar/', (req, res) => {
-    const body = req.body
-    Proyecto.findOneAndUpdate({ _id: id }, { $set: req.body }, (error) => {
+    Proyecto.findOneAndUpdate({ _id: req.body._id }, { $set: req.body }, (error) => {
         if (error) return res.status(404).send({ message: 'Error' })
         return res.status(201).send({ message: "Done!" })
     })
