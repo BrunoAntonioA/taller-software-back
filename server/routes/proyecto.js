@@ -7,6 +7,7 @@ router.post('/proyecto', (req, res) => {
     const email_jefe = req.body.email_jefe
     const nombre_jefe_proyecto = req.body.nombre_jefe_proyecto
     const nota_uno = req.body.nota_uno
+    const etapa = req.body.etapa
     const nota_dos = req.body.nota_dos
     const postulante = req.body.postulante
     const newProyeto = new Proyecto({
@@ -15,7 +16,8 @@ router.post('/proyecto', (req, res) => {
         nombre_jefe_proyecto: nombre_jefe_proyecto,
         nota_uno: nota_uno,
         nota_dos: nota_dos,
-        postulante: postulante
+        postulante: postulante,
+        etapa: etapa
     })
     newProyeto.save((error) => {
         if (error) return res.status(401).send({ message: 'Error' })
