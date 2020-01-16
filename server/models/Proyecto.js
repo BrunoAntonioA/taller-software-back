@@ -60,14 +60,14 @@ const ProyectSchema = new mongoose.Schema({
     /*Institución a la que pertenece el proyecto */
     institucion: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
         unique: false,
     },
 
     etapa: {
         type: Number,
-        required: true,
+        required: false,
         trim: true,
     },
 
