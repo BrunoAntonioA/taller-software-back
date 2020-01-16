@@ -12,12 +12,12 @@ const mongoose = require('mongoose')
  * 
  * Autores: Felipe Céspedes Cordero
  * 
- */ 
+ */
 
 const ProyectSchema = new mongoose.Schema({
-    
+
     /*Nombre del proyecto */
-    nombre_proyecto:{
+    nombre_proyecto: {
         type: String,
         required: true,
         trim: true,
@@ -27,22 +27,22 @@ const ProyectSchema = new mongoose.Schema({
 
     /* Correo electrónico del jefe de proyecto */
     email_jefe: {
-        type: String, 
-        required: true, 
-        trim: true, 
-        unique: false, 
-    },
-
-    /*Nombre del proyecto */
-    nombre_jefe_proyecto:{
         type: String,
         required: true,
         trim: true,
         unique: false,
     },
-    
+
+    /*Nombre del proyecto */
+    nombre_jefe_proyecto: {
+        type: String,
+        required: true,
+        trim: true,
+        unique: false,
+    },
+
     /*Nota de la primera evaulación del proyecto */
-    nota_uno:{
+    nota_uno: {
         type: Number,
         required: false,
         trim: true,
@@ -50,7 +50,7 @@ const ProyectSchema = new mongoose.Schema({
     },
 
     /*Nota de la segunda evaulación del proyecto */
-    nota_dos:{
+    nota_dos: {
         type: Number,
         required: false,
         trim: true,
@@ -58,19 +58,23 @@ const ProyectSchema = new mongoose.Schema({
     },
 
     /*Institución a la que pertenece el proyecto */
-    institucion:{
+    institucion: {
         type: String,
         required: true,
         trim: true,
         unique: false,
     },
 
-    etapa:{
+    etapa: {
         type: Number,
         required: true,
         trim: true,
+    },
+
+    postulante: {
+        type: [String],
     }
-    
+
 })
 
 /* Módulo a exportar */
