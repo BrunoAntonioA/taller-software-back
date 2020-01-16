@@ -43,7 +43,7 @@ server.use(require('./routes/login'))
 server.use(require('./routes/private'))
 server.use(require('./routes/proyecto'))
 server.use(require('./routes/evento'))
-
+server.use(require('./routes/postulante'))
 
 /* Método para iniciar el servidor */
 server.start = async (port=3000, dbhost='127.0.0.1', db='taller-sw-db') => {
