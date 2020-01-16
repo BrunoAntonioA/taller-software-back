@@ -1,0 +1,289 @@
+<?xmp version="1.0" encoding="UTF-8" standalone="yes"?>
+<TaskModel xmlns="http://giove.isti.cnr.it/ctt" xmlns:coop="http://giove.isti.cnr.it/cttcoop" NameTaskModelID="Pagar cuenta mediante Transbank">
+    <Task Identifier="Pagar cuenta mediante Transbank" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <SubTask>
+            <Task Identifier="Escojer tipo tarjeta" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Pagar cuenta mediante Transbank"/>
+                <SiblingRight name="Validar monto"/>
+                <SubTask>
+                    <Task Identifier="Preguntar tipo de tarjeta" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnabling"/>
+                        <Parent name="Escojer tipo tarjeta"/>
+                        <SiblingRight name="Elegir tipo de tarjeta"/>
+                    </Task>
+                    <Task Identifier="Elegir tipo de tarjeta" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Escojer tipo tarjeta"/>
+                        <SiblingLeft name="Preguntar tipo de tarjeta"/>
+                        <SubTask>
+                            <Task Identifier="Elegir crédito" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Choice"/>
+<Parent name="Elegir tipo de tarjeta"/>
+<SiblingRight name="Elegir débito"/>
+                            </Task>
+                            <Task Identifier="Elegir débito" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="SequentialEnablingInfo"/>
+<Parent name="Elegir tipo de tarjeta"/>
+<SiblingLeft name="Elegir crédito"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Validar monto" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Pagar cuenta mediante Transbank"/>
+                <SiblingLeft name="Escojer tipo tarjeta"/>
+                <SiblingRight name="Recibir tarjeta"/>
+                <SubTask>
+                    <Task Identifier="Mostrar monto" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnabling"/>
+                        <Parent name="Validar monto"/>
+                        <SiblingRight name="Confirmar monto"/>
+                    </Task>
+                    <Task Identifier="Confirmar monto" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Validar monto"/>
+                        <SiblingLeft name="Mostrar monto"/>
+                        <SubTask>
+                            <Task Identifier="Aprobar" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Choice"/>
+<Parent name="Confirmar monto"/>
+<SiblingRight name="Rechazar"/>
+                            </Task>
+                            <Task Identifier="Rechazar" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="SequentialEnablingInfo"/>
+<Parent name="Confirmar monto"/>
+<SiblingLeft name="Aprobar"/>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Recibir tarjeta" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Pagar cuenta mediante Transbank"/>
+                <SiblingLeft name="Validar monto"/>
+                <SiblingRight name="Validar saldo disponible"/>
+                <SubTask>
+                    <Task Identifier="Mostrar indiciaciones" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnabling"/>
+                        <Parent name="Recibir tarjeta"/>
+                        <SiblingRight name="Utilizar tarjeta"/>
+                    </Task>
+                    <Task Identifier="Utilizar tarjeta" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Type>None</Type>
+                        <TemporalOperator name="SequentialEnabling"/>
+                        <Parent name="Recibir tarjeta"/>
+                        <SiblingLeft name="Mostrar indiciaciones"/>
+                        <SiblingRight name="Validar lectura"/>
+                        <SubTask>
+                            <Task Identifier="Deslizar tarjeta" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Choice"/>
+<Parent name="Utilizar tarjeta"/>
+<SiblingRight name="Acercar tarjeta"/>
+<SubTask>
+    <Task Identifier="Deslizar banda magentica" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <TemporalOperator name="SequentialEnablingInfo"/>
+        <Parent name="Deslizar tarjeta"/>
+        <SiblingRight name="Escanear banda"/>
+    </Task>
+    <Task Identifier="Escanear banda" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <Parent name="Deslizar tarjeta"/>
+        <SiblingLeft name="Deslizar banda magentica"/>
+    </Task>
+</SubTask>
+                            </Task>
+                            <Task Identifier="Acercar tarjeta" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="Choice"/>
+<Parent name="Utilizar tarjeta"/>
+<SiblingLeft name="Deslizar tarjeta"/>
+<SiblingRight name="Insertar tarjeta"/>
+<SubTask>
+    <Task Identifier="Sobreponer terjata" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <TemporalOperator name="SequentialEnablingInfo"/>
+        <Parent name="Acercar tarjeta"/>
+        <SiblingRight name="Escanaer chip"/>
+    </Task>
+    <Task Identifier="Escanaer chip" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <Parent name="Acercar tarjeta"/>
+        <SiblingLeft name="Sobreponer terjata"/>
+    </Task>
+</SubTask>
+                            </Task>
+                            <Task Identifier="Insertar tarjeta" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Utilizar tarjeta"/>
+<SiblingLeft name="Acercar tarjeta"/>
+<SubTask>
+    <Task Identifier="Colocar tarjeta en ranura" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <TemporalOperator name="SequentialEnablingInfo"/>
+        <Parent name="Insertar tarjeta"/>
+        <SiblingRight name="Escanear chip"/>
+    </Task>
+    <Task Identifier="Escanear chip" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <Parent name="Insertar tarjeta"/>
+        <SiblingLeft name="Colocar tarjeta en ranura"/>
+    </Task>
+</SubTask>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                    <Task Identifier="Validar lectura" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Recibir tarjeta"/>
+                        <SiblingLeft name="Utilizar tarjeta"/>
+                        <SubTask>
+                            <Task Identifier="Notificar errores" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="SequentialEnabling"/>
+<Parent name="Validar lectura"/>
+<SiblingRight name="Finalizar"/>
+                            </Task>
+                            <Task Identifier="Finalizar" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Validar lectura"/>
+<SiblingLeft name="Notificar errores"/>
+<SubTask>
+    <Task Identifier="Sacar tarjeta" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <TemporalOperator name="Choice"/>
+        <Parent name="Finalizar"/>
+        <SiblingRight name="Probar de nuevo"/>
+    </Task>
+    <Task Identifier="Probar de nuevo" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <Parent name="Finalizar"/>
+        <SiblingLeft name="Sacar tarjeta"/>
+        <SubTask>
+            <Task Identifier="Aprobar" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Probar de nuevo"/>
+                <SiblingRight name="Rechazar"/>
+            </Task>
+            <Task Identifier="Rechazar" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Probar de nuevo"/>
+                <SiblingLeft name="Aprobar"/>
+                <SiblingRight name="Aprobar"/>
+            </Task>
+            <Task Identifier="Aprobar" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="Choice"/>
+                <Parent name="Probar de nuevo"/>
+                <SiblingLeft name="Rechazar"/>
+                <SiblingRight name="Rechazar"/>
+            </Task>
+            <Task Identifier="Rechazar" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Probar de nuevo"/>
+                <SiblingLeft name="Aprobar"/>
+            </Task>
+        </SubTask>
+    </Task>
+</SubTask>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Validar saldo disponible" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <TemporalOperator name="SequentialEnablingInfo"/>
+                <Parent name="Pagar cuenta mediante Transbank"/>
+                <SiblingLeft name="Recibir tarjeta"/>
+                <SiblingRight name="Solicitar clave"/>
+                <SubTask>
+                    <Task Identifier="Consultar saldo" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Validar saldo disponible"/>
+                        <SiblingRight name="Notificar saldo insuficiente"/>
+                    </Task>
+                    <Task Identifier="Notificar saldo insuficiente" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Validar saldo disponible"/>
+                        <SiblingLeft name="Consultar saldo"/>
+                        <SubTask>
+                            <Task Identifier="Mostrar notificación" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<TemporalOperator name="SequentialEnabling"/>
+<Parent name="Notificar saldo insuficiente"/>
+<SiblingRight name="Terminar"/>
+                            </Task>
+                            <Task Identifier="Terminar" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+<Name>name</Name>
+<Parent name="Notificar saldo insuficiente"/>
+<SiblingLeft name="Mostrar notificación"/>
+<SubTask>
+    <Task Identifier="Retirar tarjeta" Category="user" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <TemporalOperator name="Choice"/>
+        <Parent name="Terminar"/>
+        <SiblingRight name="Reintentar"/>
+    </Task>
+    <Task Identifier="Reintentar" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+        <Name>name</Name>
+        <Parent name="Terminar"/>
+        <SiblingLeft name="Retirar tarjeta"/>
+    </Task>
+</SubTask>
+                            </Task>
+                        </SubTask>
+                    </Task>
+                </SubTask>
+            </Task>
+            <Task Identifier="Solicitar clave" Category="abstraction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                <Name>name</Name>
+                <Parent name="Pagar cuenta mediante Transbank"/>
+                <SiblingLeft name="Validar saldo disponible"/>
+                <SubTask>
+                    <Task Identifier="Mostrar instrucciones" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnabling"/>
+                        <Parent name="Solicitar clave"/>
+                        <SiblingRight name="Ingresar clave"/>
+                    </Task>
+                    <Task Identifier="Ingresar clave" Category="interaction" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <TemporalOperator name="SequentialEnablingInfo"/>
+                        <Parent name="Solicitar clave"/>
+                        <SiblingLeft name="Mostrar instrucciones"/>
+                        <SiblingRight name="Validar clave"/>
+                    </Task>
+                    <Task Identifier="Validar clave" Category="application" Iterative="false" Optional="false" PartOfCooperation="false" Frequency=" ">
+                        <Name>name</Name>
+                        <Parent name="Solicitar clave"/>
+                        <SiblingLeft name="Ingresar clave"/>
+                    </Task>
+                </SubTask>
+            </Task>
+        </SubTask>
+    </Task>
+</TaskModel>
