@@ -23,7 +23,10 @@ router.post('/proyecto', (req, res) => {
     })
     console.log(req.body)
     newProyeto.save((error) => {
-        if (error) return res.status(401).send({ message: 'Error' })
+        if (error) {
+            console.log(error)
+            return res.status(401).send({ message: 'Error' })
+        }
         return res.status(201).send({ message: 'Done!' })
     })
 })
