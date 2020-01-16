@@ -26,13 +26,15 @@ router.post('/proyecto', (req, res) => {
     console.log('entra al post del back');
     console.log(req.body)
     newProyeto.save((error) => {
-        if (error){
+        if (error) {
             console.log(error);
             return res.status(401).send({ message: 'Error' })
         }
-        else{
+        else {
             return res.status(201).send({ message: 'Done!' })
         }
+
+    })
 })
 
 // Permite obtener todos los proyectos
