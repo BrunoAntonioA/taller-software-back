@@ -1,23 +1,12 @@
+
+
 const mongoose = require('mongoose')
 
-/* 
- * Esquema base para almacenar
- * la información de los usuarios
- * dentro de MongoDB. Las contraseñas
- * se almacenen mediante el hash
- * correspondiente.
- * 
- * Más info en  /server/routes/register
- *              /server/routes/login
- * 
- * Autores: Felipe Céspedes Cordero
- * 
- */ 
 
 const ProyectSchema = new mongoose.Schema({
     
     /*Nombre del proyecto */
-    nombre_proyecto:{
+    nombre:{
         type: String,
         required: true,
         trim: true,
@@ -26,7 +15,7 @@ const ProyectSchema = new mongoose.Schema({
 
 
     /* Correo electrónico del jefe de proyecto */
-    email_jefe: {
+    email: {
         type: String, 
         required: true, 
         trim: true, 
@@ -34,7 +23,7 @@ const ProyectSchema = new mongoose.Schema({
     },
 
     /*Nombre del proyecto */
-    nombre_jefe_proyecto:{
+    nombreJefe:{
         type: String,
         required: true,
         trim: true,
@@ -42,7 +31,7 @@ const ProyectSchema = new mongoose.Schema({
     },
     
     /*Nota de la primera evaulación del proyecto */
-    nota_uno:{
+    nota1:{
         type: Number,
         required: false,
         trim: true,
@@ -50,7 +39,7 @@ const ProyectSchema = new mongoose.Schema({
     },
 
     /*Nota de la segunda evaulación del proyecto */
-    nota_dos:{
+    nota2:{
         type: Number,
         required: false,
         trim: true,
@@ -58,7 +47,7 @@ const ProyectSchema = new mongoose.Schema({
     },
 
     /*Institución a la que pertenece el proyecto */
-    institucion:{
+    unidadAcademica:{
         type: String,
         required: true,
         trim: true,
