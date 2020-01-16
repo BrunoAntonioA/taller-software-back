@@ -10,7 +10,6 @@ router.post('/evento', (req, res) => {
         nombre: nombre,
         fecha: fecha,
         descripcion: descripcion,
-        
     })
     newEvento.save((error) => {
         if (error) return res.status(401).send({ message: 'Already registered' })

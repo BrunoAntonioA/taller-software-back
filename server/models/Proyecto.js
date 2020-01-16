@@ -24,7 +24,7 @@ const ProyectSchema = new mongoose.Schema({
     /* Correo electrónico del jefe de proyecto */
     email: {
         type: String, 
-        required: true, 
+        required: false, 
         trim: true, 
         unique: false, 
     },

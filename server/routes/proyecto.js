@@ -7,23 +7,24 @@ router.post('/proyecto', (req, res) => {
     const email_jefe = req.body.email_jefe
     const nombre_jefe_proyecto = req.body.nombre_jefe_proyecto
     const nota_uno = req.body.nota_uno
-    const etapa = req.body.etapa
     const nota_dos = req.body.nota_dos
+    const etapa = req.body.etapa
     const institucion = req.body.institucion
     const postulante = req.body.postulante
     const newProyeto = new Proyecto({
         nombre: nombre_proyecto,
-        eamil: email_jefe,
-        nombre_jefe_proyecto: nombre_jefe_proyecto,
+        email: email_jefe,
+        nombreJefe: nombre_jefe_proyecto,
         nota1: nota_uno,
-        nota2: nota_dos
+        nota2: nota_dos,
+        postulante: postulante
     })
-    
+
     console.log('entra al post del back');
     console.log(req.body)
     newProyeto.save((error) => {
         if (error){
-            console.log('error del back');
+            console.log(error);
             return res.status(401).send({ message: 'Error' })
         }
         else{
