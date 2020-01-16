@@ -13,6 +13,13 @@ const ProyectSchema = new mongoose.Schema({
         unique: false,
     },
 
+    concurso_id:{
+        type: String,
+        required: false,
+        trim: true,
+        unique: false,
+    },
+
 
     /* Correo electrónico del jefe de proyecto */
     email: {
@@ -49,14 +56,14 @@ const ProyectSchema = new mongoose.Schema({
     /*Institución a la que pertenece el proyecto */
     unidadAcademica:{
         type: String,
-        required: true,
+        required: false,
         trim: true,
         unique: false,
     },
 
     etapa:{
         type: Number,
-        required: true,
+        required: false,
         trim: true,
     }
     

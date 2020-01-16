@@ -10,17 +10,23 @@ router.post('/proyecto', (req, res) => {
     const nota_dos = req.body.nota_dos
     const postulante = req.body.postulante
     const newProyeto = new Proyecto({
-        nombre_proyecto: nombre_proyecto,
-        email_jefe: email_jefe,
+        nombre: nombre_proyecto,
+        eamil: email_jefe,
         nombre_jefe_proyecto: nombre_jefe_proyecto,
-        nota_uno: nota_uno,
-        nota_dos: nota_dos,
-        postulante: postulante
+        nota1: nota_uno,
+        nota2: nota_dos
     })
+    
+    console.log('entra al post del back');
     console.log(req.body)
     newProyeto.save((error) => {
-        if (error) return res.status(401).send({ message: 'Error' })
-        return res.status(201).send({ message: 'Done!' })
+        if (error){
+            console.log('error del back');
+            return res.status(401).send({ message: 'Error' })
+        }
+        else{
+            return res.status(201).send({ message: 'Done!' })
+        }
     })
 })
 
