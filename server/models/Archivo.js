@@ -13,8 +13,13 @@ const ArchivoSchema = new mongoose.Schema({
         required: true,
         trim: true,
         unique: true,
+    },
+    id_proyecto: {
+        type: String,
+        required: true,
+        trim: true,
+        unique: true,
     }
-    
 })
 
 /* Módulo a exportar */

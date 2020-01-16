@@ -30,7 +30,6 @@ router.post('/proyecto', (req, res) => {
         else{
             return res.status(201).send({ message: 'Done!' })
         }
-    })
 })
 
 // Permite obtener todos los proyectos
