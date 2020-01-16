@@ -19,6 +19,7 @@ router.post('/proyecto', (req, res) => {
         postulante: postulante,
         etapa: etapa
     })
+    console.log(req.body)
     newProyeto.save((error) => {
         if (error) return res.status(401).send({ message: 'Error' })
         return res.status(201).send({ message: 'Done!' })
