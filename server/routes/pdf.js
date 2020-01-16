@@ -8,10 +8,11 @@ router.post('/pdf', function (req, res) {
     const sample = req.files.sample
     const name = sample.name
     const ruta = `./files/${name}`
+    const id_proyecto = req.body.id_proyecto
     sample.mv(ruta, function (err) {
         if (err)
             return res.status(500).send(err);
-        const newArchivo = new Archivo({ nombre: name, ruta: ruta });
+        const newArchivo = new Archivo({ nombre: name, ruta: ruta, id_proyecto: id_proyecto });
         newArchivo.save((error) => {
             if (error) return res.status(401).send({ message: 'Error' })
             return res.status(201).send({ message: 'Done!' })
