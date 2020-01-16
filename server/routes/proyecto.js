@@ -7,7 +7,6 @@ router.post('/proyecto', (req, res) => {
     const email_jefe = req.body.email_jefe
     const nombre_jefe_proyecto = req.body.nombre_jefe_proyecto
     const nota_uno = req.body.nota_uno
-    const etapa = req.body.etapa
     const nota_dos = req.body.nota_dos
     const evento = req.body.evento
     const institucion = req.body.institucion
@@ -23,14 +22,17 @@ router.post('/proyecto', (req, res) => {
         institucion: institucion,
         evento: evento
     })
+
+    console.log('entra al post del back');
     console.log(req.body)
-    newProyeto.save((error, proyecto) => {
-        if (error) {
-            console.log(error)
+    newProyeto.save((error) => {
+        if (error){
+            console.log(error);
             return res.status(401).send({ message: 'Error' })
         }
-        return res.status(201).send({ message: proyecto._id })
-    })
+        else{
+            return res.status(201).send({ message: 'Done!' })
+        }
 })
 
 // Permite obtener todos los proyectos

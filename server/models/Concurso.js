@@ -17,6 +17,11 @@ const ConcursoSchema = new mongoose.Schema({
         type: Date,
         trim: true,
         required: true,
+    },
+
+    ids_proyectos: {
+        type: [String],
+        trim: true,
     }
     
 })
