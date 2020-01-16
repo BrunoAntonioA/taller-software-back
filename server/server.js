@@ -28,7 +28,7 @@ server.use(require('./routes/login'))
 server.use(require('./routes/private'))
 server.use(require('./routes/proyecto'))
 server.use(require('./routes/evento'))
-
+server.use(require('./routes/postulante'))
 
 
 /* Método para iniciar el servidor */
