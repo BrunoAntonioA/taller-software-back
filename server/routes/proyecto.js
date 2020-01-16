@@ -22,12 +22,12 @@ router.post('/proyecto', (req, res) => {
         institucion: institucion
     })
     console.log(req.body)
-    newProyeto.save((error) => {
+    newProyeto.save((error, proyecto) => {
         if (error) {
             console.log(error)
             return res.status(401).send({ message: 'Error' })
         }
-        return res.status(201).send({ message: 'Done!' })
+        return res.status(201).send({ message: proyecto._id })
     })
 })
 
