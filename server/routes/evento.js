@@ -43,4 +43,12 @@ router.post('/evento/eliminar/:id', (req, res) => {
     })
 })
 
+
+router.post('/evento/actualizar/', (req, res) => {
+    Evento.updateOne({ _id: req.body._id }, { $set: req.body }, (error) => {
+        if (error) return res.status(404).send({ message: 'Error' })
+        return res.status(201).send({ message: "Done!" })
+    })
+})
+
 module.exports = router

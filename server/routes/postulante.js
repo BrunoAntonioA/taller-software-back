@@ -41,4 +41,12 @@ router.post('/postulante/eliminar/:id', (req, res) => {
 })
 
 
+router.post('/postulante/actualizar/', (req, res) => {
+    Postulante.updateOne({ _id: req.body._id }, { $set: req.body }, (error) => {
+        if (error) return res.status(404).send({ message: 'Error' })
+        return res.status(201).send({ message: "Done!" })
+    })
+})
+
+
 module.exports = router

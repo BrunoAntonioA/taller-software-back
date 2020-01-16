@@ -2,10 +2,6 @@ const router = require('express').Router()
 const Archivo = require('../models/Archivo')
 
 router.post('/pdf', function (req, res) {
-    console.log(res)
-    if (error) {
-        console.log(error);
-    }
     if (!req.files || Object.keys(req.files).length === 0) {
         return res.status(400).send({ message: 'No files provided' });
     }
