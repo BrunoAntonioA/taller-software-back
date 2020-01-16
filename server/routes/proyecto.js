@@ -11,15 +11,16 @@ router.post('/proyecto', (req, res) => {
     const evento = req.body.evento
     const institucion = req.body.institucion
     const postulante = req.body.postulante
+    const etapa = req.body.etapa
     const newProyeto = new Proyecto({
-        nombre_proyecto: nombre_proyecto,
-        email_jefe: email_jefe,
-        nombre_jefe_proyecto: nombre_jefe_proyecto,
+        nombre: nombre_proyecto,
+        email: email_jefe,
+        nombreJefe: nombre_jefe_proyecto,
         nota_uno: nota_uno,
         nota_dos: nota_dos,
         postulante: postulante,
         etapa: etapa,
-        institucion: institucion,
+        unidadAcademica: institucion,
         evento: evento
     })
 
@@ -66,7 +67,8 @@ router.post('/proyecto/eliminar/:id', (req, res) => {
 
 // Elimina un proyecto según su id
 router.post('/proyecto/actualizar/', (req, res) => {
-    Proyecto.findOneAndUpdate({ _id: req.body._id }, { $set: req.body }, (error) => {
+    const body = req.body
+    Proyecto.findOneAndUpdate({ _id: id }, { $set: req.body }, (error) => {
         if (error) return res.status(404).send({ message: 'Error' })
         return res.status(201).send({ message: "Done!" })
     })
