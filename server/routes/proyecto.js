@@ -9,6 +9,7 @@ router.post('/proyecto', (req, res) => {
     const nota_uno = req.body.nota_uno
     const etapa = req.body.etapa
     const nota_dos = req.body.nota_dos
+    const institucion = req.body.institucion
     const postulante = req.body.postulante
     const newProyeto = new Proyecto({
         nombre_proyecto: nombre_proyecto,
@@ -17,7 +18,8 @@ router.post('/proyecto', (req, res) => {
         nota_uno: nota_uno,
         nota_dos: nota_dos,
         postulante: postulante,
-        etapa: etapa
+        etapa: etapa,
+        institucion: institucion
     })
     console.log(req.body)
     newProyeto.save((error) => {
