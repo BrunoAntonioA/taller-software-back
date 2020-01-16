@@ -7,7 +7,9 @@ router.post('/proyecto', (req, res) => {
     const email_jefe = req.body.email_jefe
     const nombre_jefe_proyecto = req.body.nombre_jefe_proyecto
     const nota_uno = req.body.nota_uno
+    const etapa = req.body.etapa
     const nota_dos = req.body.nota_dos
+    const institucion = req.body.institucion
     const postulante = req.body.postulante
     const newProyeto = new Proyecto({
         nombre: nombre_proyecto,

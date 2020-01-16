@@ -16,7 +16,7 @@ server.use = (module) => {
 
 /* Emplea JSON como notación de objetos */
 server.use(express.json())
-app.use(cors({ origin: 'http://localhost:4200' }));
+app.use(cors({ origin: 'http://localhost:4200'}));
 server.use(fileUpload())
 
 server.use(require('./routes/concurso'))

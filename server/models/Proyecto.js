@@ -65,6 +65,11 @@ const ProyectSchema = new mongoose.Schema({
         type: Number,
         required: false,
         trim: true,
+    },
+
+    postulante: {
+        type: [String],
+        trim: true,
     }
     
 })
