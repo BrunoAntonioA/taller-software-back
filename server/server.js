@@ -32,7 +32,7 @@ server.use(require('./routes/postulante'))
 
 
 /* Método para iniciar el servidor */
-server.start = async (port=3000, dbhost='190.101.185.129', db='taller-sw-db') => {
+server.start = async (port=3000, dbhost='127.0.0.1', db='taller-sw-db') => {
 
     /* Obtiene las credenciales de MongoDB y sus parámetros de configuración */
     const mongo = `mongodb://${dbhost}/${db}`
